@@ -7,9 +7,9 @@ from keras.preprocessing.image import img_to_array
 from keras.applications.vgg16 import preprocess_input
 from keras.models import Model
 
+#
 def extract_features(directory,target_size):
 
-	#model = keras.applications.inception_v3.InceptionV3(include_top=True, weights='imagenet', input_tensor=None, input_shape=None, pooling=None, classes=1000)
 	model = VGG16()
 	#Modify model to remove the last layer
 	model.layers.pop()

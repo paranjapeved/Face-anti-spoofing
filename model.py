@@ -10,6 +10,7 @@ from keras.applications.vgg16 import preprocess_input
 from keras.models import Model
 from sklearn.metrics import confusion_matrix
 
+# Load file
 def load_file(filename):
     # open the file as read only
     file = open(filename, 'r')
@@ -19,6 +20,7 @@ def load_file(filename):
     file.close()
     return text
 
+# Load features of the pictures
 def load_features(filename,dataset):
     all_features = pkl.load(open(filename, 'rb'))
     # filter features
@@ -77,9 +79,6 @@ if __name__ == '__main__':
     positive_features = load_features('ClientRaw.pkl',positive_train)
     negative_features = load_features('ImposterRaw.pkl',negative_train)
 
-
-    # print(positive_features)
-
     print("training non-spoofed images:", len(positive_features))
     print("training spoofed_images:", len(negative_features))
 
@@ -94,11 +93,6 @@ if __name__ == '__main__':
 
     positive_features[:], positive_labels[:] = zip(*combined)
     print(len(positive_features[0]))
-
-
-    # X = [[0, 0], [1, 1],[0,1]]
-    # y = [0, 1,0]
-
 
     model = train_svm(positive_features,positive_labels)
     print(model)
@@ -140,7 +134,5 @@ if __name__ == '__main__':
     print("FN:",fn)
 
     print("Accuracy:",(tp+tn)/(tp+tn+fp+fn))
-
-    # print("prediction:",predict_image(model,'non.jpeg'))
 
 
