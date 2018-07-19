@@ -14,4 +14,7 @@ These vectors of training images are then passed on to an SVM as input and the o
 for spoofed). This simple model gives 97% accuracy on the NUAA dataset.
 
 ## Instructions
+Run the create_embeddings.py to generate the embeddings for your images. You can change the name of the folder (default "raw").
+Two files called ImposterRaw.pkl and ClientRaw.pkl would be formed which would contain the training features. 
+Then run model.py which trains an SVM using these two pickle files as inputs and tests the trained model on the testing dataset. The train-test files can be specified as seprate txt files where each line contains the location of the corresponding images.
 
